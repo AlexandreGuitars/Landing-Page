@@ -1,399 +1,1394 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alexandre - Oficina & Archive</title>
-  <meta name="description" content="Oficina de construção, regulagem e restauração de instrumentos. Archive de documentação histórica e preservação da cultura.">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Alexandre Guitars — Reparo, customização e manutenção de instrumentos de corda em São Paulo. Luthieria artesanal com cuidado profissional.">
+<title>Alexandre Guitars — Luthieria em São Paulo</title>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & TOKENS ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
+:root {
+  --amber:     #E8890A;
+  --burnt:     #C8511A;
+  --dark-red:  #8B3A0A;
+  --near-blk:  #1a0500;
+  --bg:        #0C0702;
+  --surface:   #160E05;
+  --surface2:  #1E1409;
+  --cream:     #F0E6D0;
+  --cream-dim: #C4AA88;
+  --muted:     #7A5C3A;
+  --border:    #2E1A08;
+  --border2:   #4A2E12;
+  --green:     #5DCAA5;
+}
 
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background-color: rgb(242, 228, 192);
-      color: rgb(13, 7, 3);
-      font-size: 16px;
-      line-height: normal;
-      text-decoration: none;
-    }
+html { scroll-behavior: smooth; }
 
-    .container {
-      position: relative;
-      background-color: rgb(242, 228, 192);
-      width: 100%;
-      max-width: 1536px;
-      margin: 0 auto;
-      color: rgb(13, 7, 3);
-      line-height: 25.6px;
-    }
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: 'Libre Baskerville', Georgia, serif;
+  overflow-x: hidden;
+  cursor: default;
+}
 
-    /* Background decorative elements */
-    .bg-pattern {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      pointer-events: none;
-      mix-blend-mode: multiply;
-      z-index: 0;
-      background-image: 
-        repeating-linear-gradient(1deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 2px, rgba(139, 94, 42, 0.008) 2px, rgba(139, 94, 42, 0.008) 3px),
-        repeating-linear-gradient(91deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 8px, rgba(139, 94, 42, 0.004) 8px, rgba(139, 94, 42, 0.004) 9px),
-        radial-gradient(180px 140px at 8% 10%, rgba(139, 94, 42, 0.05) 0%, rgba(0, 0, 0, 0) 100%),
-        radial-gradient(100px 80px at 94% 90%, rgba(139, 94, 42, 0.04) 0%, rgba(0, 0, 0, 0) 100%),
-        radial-gradient(95% 90%, rgba(255, 248, 228, 0.15) 0%, rgba(0, 0, 0, 0) 65%),
-        radial-gradient(130% 130%, rgba(0, 0, 0, 0) 50%, rgba(139, 94, 42, 0.09) 100%);
-    }
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--burnt); border-radius: 2px; }
 
-    .noise-texture {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      pointer-events: none;
-      mix-blend-mode: multiply;
-      z-index: 0;
-      opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23g)'/%3E%3C/svg%3E");
-      background-size: 280px 280px;
-    }
+/* ── GRAIN OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.6;
+}
 
-    .content-wrapper {
-      position: relative;
-      z-index: 1;
-    }
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(12, 7, 2, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--border);
+  transition: all 0.3s;
+}
 
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      max-width: 1100px;
-      min-height: 639.2px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
+.nav-brand {
+  font-family: 'Special Elite', monospace;
+  font-size: 18px;
+  color: var(--cream);
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-brand .star { color: var(--burnt); font-size: 12px; }
 
-    .logo-section {
-      position: relative;
-      text-align: center;
-      width: 480px;
-      margin-top: 40px;
-      margin-bottom: 60px;
-      z-index: 1;
-    }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'Special Elite', monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--cream); }
 
-    .logo-section img {
-      display: block;
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
+.nav-cta {
+  background: var(--burnt);
+  color: var(--cream) !important;
+  padding: 8px 18px;
+  border-radius: 2px;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--amber) !important; color: var(--near-blk) !important; }
 
-    .tagline {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      text-align: center;
-      text-transform: uppercase;
-      margin-bottom: 60px;
-      color: rgba(13, 7, 3, 0.5);
-      font-size: 11px;
-      letter-spacing: 2px;
-      line-height: 22px;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-      z-index: 1;
-      position: relative;
-    }
+/* hamburger */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--cream-dim); transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4.5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4.5px); }
 
-    .divider {
-      position: relative;
-      text-align: center;
-      width: 60px;
-      height: 0.5px;
-      margin-bottom: 70px;
-      background-color: rgba(13, 7, 3, 0.1);
-      margin-left: auto;
-      margin-right: auto;
-      z-index: 1;
-    }
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 64px; left: 0; right: 0;
+  background: rgba(12, 7, 2, 0.98);
+  border-bottom: 0.5px solid var(--border);
+  padding: 1.5rem 2rem;
+  z-index: 99;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Special Elite', monospace;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: var(--cream-dim);
+  text-decoration: none;
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+  border-bottom: 0.5px solid var(--border);
+}
+.mobile-menu a:last-child { border-bottom: none; color: var(--burnt); }
 
-    .grid-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      width: 100%;
-      margin-bottom: 100px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 2rem 4rem;
+  text-align: center;
+}
 
-    .grid-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 0 20px;
-    }
+/* sunburst */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 70% at 50% 55%,
+    rgba(232,137,10,0.22) 0%,
+    rgba(200,81,26,0.14) 35%,
+    rgba(139,58,10,0.06) 60%,
+    transparent 80%
+  );
+}
+.hero-bg-2 {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 40% at 50% 60%,
+    rgba(232,137,10,0.08) 0%,
+    transparent 70%
+  );
+}
 
-    .section-label {
-      font-family: 'Cormorant Garamond', serif;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      color: rgba(13, 7, 3, 0.1);
-      font-size: 10px;
-      letter-spacing: 6px;
-      line-height: 16px;
-      opacity: 0.6;
-      position: relative;
-      z-index: 1;
-    }
+/* horizontal scan lines */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.04) 3px,
+    rgba(0,0,0,0.04) 4px
+  );
+  pointer-events: none;
+}
 
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 42px;
-      letter-spacing: -0.3px;
-      line-height: 48.3px;
-      margin-bottom: 16px;
-      position: relative;
-      z-index: 1;
-    }
+.hero-content { position: relative; z-index: 2; max-width: 700px; }
 
-    .section-description {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 300;
-      text-align: center;
-      margin-bottom: 28px;
-      color: rgb(139, 94, 42);
-      font-size: 14px;
-      line-height: 25.2px;
-      max-width: 280px;
-      position: relative;
-      z-index: 1;
-    }
+.hero-eyebrow {
+  font-family: 'Special Elite', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--burnt);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.2s;
+}
 
-    .link-button {
-      position: relative;
-      text-align: center;
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: 4px;
-      line-height: 19.2px;
-      font-family: 'Cormorant Garamond', serif;
-      display: inline-block;
-      padding-bottom: 6px;
-      z-index: 1;
-      cursor: pointer;
-      text-decoration: none;
-      color: rgb(13, 7, 3);
-      transition: all 0.3s ease;
-      border-bottom: 0.8px solid transparent;
-    }
+.hero-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.4s;
+}
+.hero-ornament .line { width: 80px; height: 0.5px; background: var(--burnt); opacity: 0.5; }
+.hero-ornament .star { color: var(--burnt); font-size: 16px; }
 
-    .link-button::after {
-      content: '';
-      position: absolute;
-      height: 1px;
-      width: 0;
-      left: 50%;
-      bottom: -6px;
-      background-color: rgb(212, 168, 67);
-      transition: width 0.3s ease, left 0.3s ease;
-    }
+.hero-name {
+  font-family: 'Special Elite', monospace;
+  font-size: clamp(52px, 10vw, 96px);
+  letter-spacing: 0.04em;
+  color: var(--cream);
+  line-height: 0.95;
+  text-shadow: 0 0 80px rgba(232,137,10,0.15);
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.5s;
+}
 
-    .link-button:hover::after {
-      width: 100%;
-      left: 0;
-    }
+.hero-sub {
+  font-family: 'Special Elite', monospace;
+  font-size: clamp(16px, 3vw, 24px);
+  letter-spacing: 0.28em;
+  color: var(--burnt);
+  margin-top: 8px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.65s;
+}
 
-    footer {
-      position: relative;
-      text-transform: uppercase;
-      width: 100%;
-      color: rgba(13, 7, 3, 0.2);
-      font-size: 10px;
-      letter-spacing: 3px;
-      line-height: 16px;
-      font-family: 'Cormorant Garamond', serif;
-      padding-top: 80px;
-      padding-bottom: 60px;
-      border-top: 0.8px solid rgba(13, 7, 3, 0.1);
-      z-index: 1;
-    }
+.hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 2rem 0;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.8s;
+}
+.hero-divider .line { width: 120px; height: 0.5px; background: var(--border2); }
+.hero-divider .star { color: var(--muted); font-size: 10px; }
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 40px;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 40px;
-      margin-bottom: 40px;
-      text-align: center;
-    }
+.hero-tagline {
+  font-size: clamp(13px, 2vw, 16px);
+  color: var(--cream-dim);
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.9s;
+}
 
-    .footer-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-transform: uppercase;
-      position: relative;
-      z-index: 1;
-    }
+.hero-açãos {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 1.1s;
+}
 
-    .footer-text {
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      opacity: 0.5;
-      font-size: 10px;
-    }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--burnt);
+  color: var(--cream);
+  font-family: 'Special Elite', monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-primary:hover { background: var(--amber); color: var(--near-blk); transform: translateY(-1px); }
 
-    .volume-indicator {
-      position: fixed;
-      bottom: 24px;
-      right: 40px;
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      text-transform: uppercase;
-      color: rgba(13, 7, 3, 0.2);
-      font-size: 10px;
-      letter-spacing: 2px;
-      line-height: 16px;
-      z-index: 1;
-      opacity: 0.4;
-      pointer-events: none;
-    }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--cream-dim);
+  font-family: 'Special Elite', monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 13px 28px;
+  border: 0.5px solid var(--border2);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-secondary:hover { border-color: var(--burnt); color: var(--cream); }
 
-    /* Responsive */
-    @media (max-width: 1024px) {
-      main {
-        padding: 0 30px;
-      }
+/* scroll indicator */
+.scroll-ind {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  animation: fadeUp 1s ease forwards 1.5s;
+}
+.scroll-ind span { font-family: 'Special Elite', monospace; font-size: 8px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+.scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--burnt), transparent); animation: scrollPulse 2s ease infinite; }
 
-      .logo-section {
-        width: 350px;
-      }
+/* ── SECTIONS ── */
+section { padding: 6rem 2rem; }
+.container { max-width: 1100px; margin: 0 auto; }
 
-      .grid-container {
-        gap: 60px;
-      }
-    }
+.section-label {
+  font-family: 'Special Elite', monospace;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: var(--burnt);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::after { content: ''; width: 40px; height: 0.5px; background: var(--burnt); opacity: 0.5; }
 
-    @media (max-width: 768px) {
-      .container {
-        max-width: 100%;
-      }
+.section-title {
+  font-family: 'Special Elite', monospace;
+  font-size: clamp(28px, 5vw, 48px);
+  color: var(--cream);
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
 
-      main {
-        padding: 0 20px;
-        min-height: auto;
-      }
+.section-intro {
+  font-size: 15px;
+  color: var(--cream-dim);
+  line-height: 1.8;
+  max-width: 560px;
+}
 
-      .logo-section {
-        width: 250px;
-        margin-bottom: 40px;
-      }
+/* ── SOBRE ── */
+.sobre { background: var(--surface); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); }
 
-      .tagline {
-        font-size: 10px;
-        margin-bottom: 40px;
-      }
+.sobre-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
 
-      .divider {
-        margin-bottom: 50px;
-      }
+.sobre-visual {
+  position: relative;
+  aspect-ratio: 4/3;
+}
 
-      .grid-container {
-        grid-template-columns: 1fr;
-        gap: 60px;
-        margin-bottom: 60px;
-      }
+.sobre-frame {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 40% 40%,
+    rgba(232,137,10,0.25) 0%,
+    rgba(200,81,26,0.15) 40%,
+    rgba(26,5,0,0.8) 100%
+  );
+  border: 0.5px solid var(--border2);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
 
-      .section-title {
-        font-size: 32px;
-        line-height: 36px;
-      }
+.sobre-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 20px,
+    rgba(200,81,26,0.03) 20px,
+    rgba(200,81,26,0.03) 21px
+  );
+}
 
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 0 20px;
-      }
+.sobre-monogram {
+  font-family: 'Special Elite', monospace;
+  font-size: 80px;
+  color: rgba(240,230,208,0.12);
+  letter-spacing: 0.1em;
+  user-select: none;
+  position: absolute;
+}
+.sobre-monogram-small {
+  font-family: 'Special Elite', monospace;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: rgba(240,230,208,0.4);
+  position: absolute;
+  bottom: 1.5rem;
+}
 
-      .volume-indicator {
-        right: 20px;
-        bottom: 20px;
-      }
-    }
-  </style>
+.sobre-badge {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  width: 80px;
+  height: 80px;
+  background: var(--burnt);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Special Elite', monospace;
+  color: var(--cream);
+}
+.sobre-badge .num { font-size: 24px; line-height: 1; }
+.sobre-badge .lbl { font-size: 7px; letter-spacing: 0.1em; opacity: 0.8; }
+
+.sobre-text .section-title { margin-bottom: 1.5rem; }
+
+.sobre-text p {
+  font-size: 14px;
+  color: var(--cream-dim);
+  line-height: 1.9;
+  margin-bottom: 1.25rem;
+}
+.sobre-text p strong { color: var(--cream); font-weight: 700; }
+
+.sobre-vals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 2rem;
+}
+.val-item {
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  padding: 14px;
+  transition: border-color 0.2s;
+}
+.val-item:hover { border-color: var(--burnt); }
+.val-icon { font-size: 18px; margin-bottom: 6px; }
+.val-name { font-family: 'Special Elite', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--cream); margin-bottom: 4px; }
+.val-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+/* ── SERVIÇOS ── */
+.servicos { background: var(--bg); }
+
+.srv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 0.5px solid var(--border);
+  margin-top: 3rem;
+}
+
+.srv-card {
+  background: var(--bg);
+  padding: 2rem 1.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.25s;
+}
+.srv-card:hover { background: var(--surface); }
+.srv-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--burnt), transparent);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+.srv-card:hover::before { transform: scaleX(1); }
+
+.srv-num {
+  font-family: 'Special Elite', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--burnt);
+  margin-bottom: 1rem;
+}
+.srv-icon { font-size: 24px; margin-bottom: 1rem; }
+.srv-name {
+  font-family: 'Special Elite', monospace;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+.srv-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.srv-items {
+  list-style: none;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.srv-items li {
+  font-size: 11px;
+  color: var(--cream-dim);
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.5;
+}
+.srv-items li::before { content: '–'; position: absolute; left: 0; color: var(--burnt); opacity: 0.6; }
+
+.srv-cta {
+  text-align: center;
+  margin-top: 3rem;
+}
+.srv-cta p { font-size: 14px; color: var(--cream-dim); margin-bottom: 1.25rem; line-height: 1.7; }
+
+/* ── COMO FUNCIONA ── */
+.processo { background: var(--surface); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); }
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 3rem;
+  position: relative;
+}
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 12%;
+  right: 12%;
+  height: 0.5px;
+  background: linear-gradient(to right, var(--border2), var(--burnt), var(--border2));
+  z-index: 0;
+}
+
+.step {
+  padding: 0 1.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.step-num {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 0.5px solid var(--burnt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-family: 'Special Elite', monospace;
+  font-size: 18px;
+  color: var(--burnt);
+  position: relative;
+}
+.step-num::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 0.5px solid var(--border);
+}
+.step-title {
+  font-family: 'Special Elite', monospace;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+.step-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* ── DIFERENCIAIS ── */
+.diferenciais { background: var(--bg); overflow: hidden; }
+
+.dif-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.dif-text .section-title { margin-bottom: 2rem; }
+
+.dif-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.dif-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px;
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.dif-item:hover { border-color: var(--burnt); background: var(--surface); }
+.dif-bullet {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(200,81,26,0.12);
+  border: 0.5px solid var(--burnt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 13px;
+}
+.dif-content h4 { font-family: 'Special Elite', monospace; font-size: 13px; color: var(--cream); margin-bottom: 4px; letter-spacing: 0.04em; }
+.dif-content p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+.dif-visual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.dif-stat {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.dif-stat:hover { border-color: var(--burnt); }
+.dif-stat:nth-child(1) { grid-column: span 2; }
+.dif-stat .big {
+  font-family: 'Special Elite', monospace;
+  font-size: 42px;
+  color: var(--amber);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.dif-stat .lbl { font-family: 'Special Elite', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+
+/* ── INSTRUMENTOS ── */
+.instrumentos { background: var(--surface); border-top: 0.5px solid var(--border); }
+
+.inst-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-top: 3rem;
+}
+.inst-card {
+  background: var(--bg);
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: all 0.2s;
+}
+.inst-card:hover { border-color: var(--burnt); background: var(--surface2); transform: translateY(-3px); }
+.inst-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+.inst-name { font-family: 'Special Elite', monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--cream-dim); }
+
+/* depoimentos CSS removed */
+
+/* ── CONTATO ── */
+.contato {
+  background: var(--surface);
+  border-top: 0.5px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.contato::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse, rgba(200,81,26,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.contato-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.contato-info p { font-size: 14px; color: var(--cream-dim); line-height: 1.9; margin-bottom: 2rem; }
+
+.contato-items { display: flex; flex-direction: column; gap: 16px; }
+.contato-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.contato-item:hover { border-color: var(--burnt); background: var(--surface2); }
+.c-icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(200,81,26,0.1); border: 0.5px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.c-label { font-family: 'Special Elite', monospace; font-size: 9px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; margin-bottom: 3px; }
+.c-value { font-size: 13px; color: var(--cream); }
+
+.horarios {
+  background: var(--bg);
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+.horarios h4 { font-family: 'Special Elite', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--burnt); text-transform: uppercase; margin-bottom: 1rem; }
+.horario-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 0.5px solid var(--border); }
+.horario-row:last-child { border-bottom: none; }
+.hor-dia { font-size: 12px; color: var(--cream-dim); font-family: 'Courier Prime', monospace; }
+.hor-hora { font-family: 'Special Elite', monospace; font-size: 11px; color: var(--cream); }
+.hor-hora.fechado { color: var(--muted); }
+
+/* form side */
+.contato-form { padding-top: 0.5rem; }
+.contato-form h3 { font-family: 'Special Elite', monospace; font-size: 18px; color: var(--cream); letter-spacing: 0.04em; margin-bottom: 1.5rem; }
+
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-family: 'Special Elite', monospace; font-size: 8px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 0.5px solid var(--border2);
+  border-radius: 2px;
+  color: var(--cream);
+  font-family: 'Libre Baskerville', serif;
+  font-size: 13px;
+  padding: 11px 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--burnt); }
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-group select option { background: var(--surface); }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.form-submit {
+  width: 100%;
+  background: var(--burnt);
+  color: var(--cream);
+  font-family: 'Special Elite', monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 14px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 4px;
+}
+.form-submit:hover { background: var(--amber); color: var(--near-blk); }
+.form-note { font-size: 10px; color: var(--muted); margin-top: 8px; text-align: center; font-family: 'Courier Prime', monospace; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--near-blk);
+  border-top: 0.5px solid var(--border2);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-brand {
+  font-family: 'Special Elite', monospace;
+  font-size: 22px;
+  color: var(--cream);
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+.footer-sub {
+  font-family: 'Special Elite', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--burnt);
+  margin-bottom: 1.5rem;
+}
+
+.footer-ornament { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 1.5rem; }
+.footer-ornament .line { width: 60px; height: 0.5px; background: var(--border2); }
+.footer-ornament .star { color: var(--burnt); font-size: 10px; }
+
+.footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.footer-links a {
+  font-family: 'Special Elite', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--cream); }
+
+.footer-copy { font-size: 11px; color: var(--muted); font-family: 'Courier Prime', monospace; }
+
+/* ── WHATSAPP FLOAT ── */
+.wa-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 56px;
+  height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 26px;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+  z-index: 50;
+  transition: all 0.2s;
+  animation: fadeUp 1s ease forwards 2s;
+  opacity: 0;
+}
+.wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollPulse {
+  0%,100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .sobre-grid, .dif-layout, .contato-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .sobre-visual { aspect-ratio: 16/7; }
+  .steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .steps::before { display: none; }
+  .srv-grid { grid-template-columns: 1fr 1fr; }
+  .dep-grid { grid-template-columns: 1fr; }
+  .inst-grid { grid-template-columns: repeat(3, 1fr); }
+  .dif-visual { grid-template-columns: 1fr 1fr; }
+  .dif-stat:nth-child(1) { grid-column: span 1; }
+}
+
+@media (max-width: 640px) {
+  section { padding: 4rem 1.25rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .srv-grid { grid-template-columns: 1fr; }
+  .inst-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-açãos { flex-direction: column; align-items: center; }
+  .sobre-vals { grid-template-columns: 1fr; }
+  .dif-visual { display: none; }
+}
+
+/* ── ORC LINK CARD ── */
+.orc-link-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--surface2);
+  border: 0.5px solid var(--burnt);
+  border-radius: 4px;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  transition: all 0.2s;
+}
+.orc-link-card:hover { background: var(--near-blk); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,81,26,0.2); }
+.orc-link-icon { font-size: 28px; flex-shrink: 0; }
+.orc-link-content { flex: 1; }
+.orc-link-title { font-family: 'Special Elite', monospace; font-size: 15px; color: var(--cream); letter-spacing: 0.04em; margin-bottom: 4px; }
+.orc-link-desc { font-size: 11px; color: var(--muted); font-family: 'Courier Prime', monospace; }
+.orc-link-arrow { font-size: 20px; color: var(--burnt); font-family: 'Special Elite', monospace; }
+.orc-divider { display: flex; align-items: center; gap: 12px; margin: 1.25rem 0; }
+.orc-divider::before, .orc-divider::after { content: ''; flex: 1; height: 0.5px; background: var(--border2); }
+.orc-divider span { font-family: 'Special Elite', monospace; font-size: 9px; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; white-space: nowrap; }
+
+  /* ── FORM STYLES ── */
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display:block; font-family:'Special Elite',monospace; font-size:8px; letter-spacing:0.18em; color:var(--muted); text-transform:uppercase; margin-bottom:5px; }
+  .form-group input, .form-group select, .form-group textarea { width:100%; background:var(--bg); border:0.5px solid var(--border2); border-radius:2px; color:var(--cream); font-family:'Libre Baskerville',serif; font-size:13px; padding:10px 12px; outline:none; transition:border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color:var(--burnt); }
+  .form-group textarea { resize:vertical; min-height:100px; }
+  .form-group select option { background:var(--surface); }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .form-submit { width:100%; background:var(--burnt); color:var(--cream); font-family:'Special Elite',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; padding:14px; border:none; border-radius:2px; cursor:pointer; transition:all 0.2s; margin-top:4px; }
+  .form-submit:hover { background:var(--amber); color:var(--near-blk); }
+  .form-submit:disabled { opacity:0.6; cursor:default; }
+  .form-note { font-size:10px; color:var(--muted); margin-top:8px; text-align:center; font-family:'Courier Prime',monospace; }
+  @media(max-width:640px){ .form-row { grid-template-columns:1fr; } }
+</style>
 </head>
 <body>
-  <div class="bg-pattern"></div>
-  <div class="noise-texture"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <span class="star">✦</span>
+    Alexandre Guitars
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#processo">Como funciona</a></li>
+    
+    <li><a href="#contato" class="nav-cta">Pedir orçamento</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre" onclick="toggleMenu()">Sobre</a>
+  <a href="#servicos" onclick="toggleMenu()">Serviços</a>
+  <a href="#processo" onclick="toggleMenu()">Como funciona</a>
   
-  <div class="container">
-    <div class="content-wrapper">
-      <main>
-        <div class="logo-section">
-          <img src="logo.png" alt="Alexandre logo">
-        </div>
+  <a href="#contato" onclick="toggleMenu()">Pedir orçamento →</a>
+</div>
 
-        <p class="tagline">Precisão na oficina. Permanência no Archive.</p>
-
-        <div class="divider"></div>
-
-        <div class="grid-container">
-          <div class="grid-item">
-            <p class="section-label">AG-OF</p>
-            <h1 class="section-title">Oficina</h1>
-            <p class="section-description">Construção, regulagem e restauração de instrumentos.</p>
-            <a href="#" class="link-button">Entrar</a>
-          </div>
-
-          <div class="grid-item">
-            <p class="section-label">AG-AR</p>
-            <h1 class="section-title">Archive</h1>
-            <p class="section-description">Documentação histórica e preservação da cultura.</p>
-            <a href="#" class="link-button">Entrar</a>
-          </div>
-        </div>
-      </main>
-
-      <footer>
-        <div class="footer-grid">
-          <div class="footer-item">
-            <p class="footer-text">EST. MMXXIV</p>
-          </div>
-          <div class="footer-item">
-            <p class="footer-text">São Paulo, Brasil</p>
-          </div>
-          <div class="footer-item">
-            <p class="footer-text">Archive Edition</p>
-          </div>
-        </div>
-      </footer>
-
-      <div class="volume-indicator">Volume I</div>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-2"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Luthieria artesanal em São Paulo</div>
+    <div class="hero-ornament">
+      <div class="line"></div>
+      <div class="star">✦</div>
+      <div class="line"></div>
+    </div>
+    <div class="hero-name">Alexandre</div>
+    <div class="hero-sub">G u i t a r s</div>
+    <div class="hero-divider">
+      <div class="line"></div>
+      <div class="star">✦</div>
+      <div class="line"></div>
+    </div>
+    <div class="hero-tagline">
+      Reparo · Customização · Manutenção<br>
+      de instrumentos de corda com cuidado artesanal
+    </div>
+    <div class="hero-açãos">
+      <a href="https://wa.me/5511993394130" class="btn-primary" target="_blank">💬 Pedir orçamento</a>
+      <a href="#servicos" class="btn-secondary">Ver serviços</a>
     </div>
   </div>
+  <div class="scroll-ind">
+    <span>scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="sobre" id="sobre">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-visual reveal">
+        <div class="sobre-frame">
+          <div class="sobre-monogram">AG</div>
+          <div class="sobre-monogram-small">Alexandre Guitars · São Paulo</div>
+        </div>
+        <div class="sobre-badge">
+          <div class="num">SP</div>
+          <div class="lbl">capital</div>
+        </div>
+      </div>
+      <div class="sobre-text reveal">
+        <div class="section-label">Sobre</div>
+        <h2 class="section-title">O ofício<br>de cuidar<br>do seu som</h2>
+        <p>Sou <strong>Felipe Alexandre</strong>, guitarrista e luthier, faço reparos e manutenções de instrumentos de corda em São Paulo. Trabalho com atenção artesanal.</p>
+        <p>Cada instrumento que chega na minha oficina é tratado como único — com diagnóstico honesto, orçamento transparente e entrega dentro do prazo combinado.</p>
+        <p>Acredito que um instrumento bem cuidado toca melhor, soa melhor e dura gerações.</p>
+        <div class="sobre-vals">
+          <div class="val-item">
+            <div class="val-icon">🤝</div>
+            <div class="val-name">Honestidade</div>
+            <div class="val-desc">Orçamento antes de qualquer serviço. Sem surpresas.</div>
+          </div>
+          <div class="val-item">
+            <div class="val-icon">⏱️</div>
+            <div class="val-name">Prazo</div>
+            <div class="val-desc">Músico não pode ficar sem instrumento por semanas.</div>
+          </div>
+          <div class="val-item">
+            <div class="val-icon">🎯</div>
+            <div class="val-name">Precisão</div>
+            <div class="val-desc">Ferramentas especializadas e técnica apurada.</div>
+          </div>
+          <div class="val-item">
+            <div class="val-icon">🛡️</div>
+            <div class="val-name">Garantia</div>
+            <div class="val-desc">30 dias em todos os serviços realizados.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="servicos" id="servicos">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Serviços</div>
+      <h2 class="section-title">O que fazemos</h2>
+      <p class="section-intro">Da regulagem rápida ao reparo estrutural complexo — cada serviço com cuidado artesanal e peças de qualidade.</p>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card reveal">
+        <div class="srv-num">01</div>
+        <div class="srv-icon">🎸</div>
+        <div class="srv-name">Setup & Regulagem</div>
+        <div class="srv-desc">O serviço mais solicitado. Deixa o instrumento tocando no seu melhor.</div>
+        <ul class="srv-items">
+          <li>Ajuste de ação (altura das cordas)</li>
+          <li>Entonação</li>
+          <li>Regulagem do tensor</li>
+          <li>Lubrificação de tarraxas e pestana</li>
+          <li>Troca de cordas</li>
+        </ul>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-num">02</div>
+        <div class="srv-icon">🔩</div>
+        <div class="srv-name">Trastes</div>
+        <div class="srv-desc">Nivelamento, coroamento, polimento e troca completa de trastes.</div>
+        <ul class="srv-items">
+          <li>Nivelamento de trastes existentes</li>
+          <li>Troca parcial (trastes isolados)</li>
+          <li>Refretting completo — guitarra</li>
+          <li>Refretting completo — violão</li>
+          <li>Polimento e acabamento</li>
+        </ul>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-num">03</div>
+        <div class="srv-icon">⚡</div>
+        <div class="srv-name">Elétrica</div>
+        <div class="srv-desc">Diagnóstico e reparo de circuitos, captadores e componentes eletrônicos.</div>
+        <ul class="srv-items">
+          <li>Diagnóstico de ruídos e falhas</li>
+          <li>Troca de captadores</li>
+          <li>Troca de potenciômetros e jacks</li>
+          <li>Substituição de chave seletora</li>
+          <li>Refiação completa</li>
+        </ul>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-num">04</div>
+        <div class="srv-icon">🪵</div>
+        <div class="srv-name">Reparos Estruturais</div>
+        <div class="srv-desc">Reparos na madeira, braço, pestana e estrutura do instrumento.</div>
+        <ul class="srv-items">
+          <li>Colagem de braço</li>
+          <li>Troca e ajuste de pestana</li>
+          <li>Reparo de cavalete (violão)</li>
+          <li>Troca de tarraxas</li>
+          <li>Reparo de trincas</li>
+        </ul>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-num">05</div>
+        <div class="srv-icon">✨</div>
+        <div class="srv-name">Limpeza & Conservação</div>
+        <div class="srv-desc">Manutenção preventiva que preserva o instrumento e evita reparos maiores.</div>
+        <ul class="srv-items">
+          <li>Limpeza profunda do escudo</li>
+          <li>Condicionamento da madeira</li>
+          <li>Polimento do corpo</li>
+          <li>Revisão semestral completa</li>
+          <li>Troca de cordas</li>
+        </ul>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-num">06</div>
+        <div class="srv-icon">🎨</div>
+        <div class="srv-name">Customização</div>
+        <div class="srv-desc">Upgrades de hardware e personalizações para deixar o instrumento do seu jeito.</div>
+        <ul class="srv-items">
+          <li>Troca de hardware</li>
+          <li>Upgrade de tarraxas</li>
+          <li>Instalação de escudo</li>
+          <li>Acabamentos personalizados</li>
+          <li>Consultar disponibilidade</li>
+        </ul>
+      </div>
+    </div>
+    <div class="srv-cta reveal">
+      <p>Não encontrou o que precisa? Entre em contato — avalio qualquer instrumento de corda.</p>
+      <a href="https://wa.me/5511993394130" class="btn-primary" target="_blank">💬 Entrar em contato</a>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="processo" id="processo">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Como funciona</div>
+      <h2 class="section-title">Simples e transparente</h2>
+      <p class="section-intro">Do primeiro contato à entrega, você sabe exatamente o que está acontecendo com o seu instrumento.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div class="step-title">Contato</div>
+        <div class="step-desc">Manda uma mensagem pelo WhatsApp descrevendo o problema. Fotos e vídeos ajudam muito no diagnóstico inicial.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <div class="step-title">Diagnóstico</div>
+        <div class="step-desc">Avaliação completa do instrumento ao vivo. Você recebe um orçamento detalhado antes de qualquer serviço ser iniciado.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <div class="step-title">Execução</div>
+        <div class="step-desc">Serviço realizado com ferramentas especializadas. Você recebe fotos e atualizações durante o processo.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <div class="step-title">Entrega</div>
+        <div class="step-desc">Instrumento devolvido com relatório do que foi feito, orientações de conservação e garantia de 30 dias.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="diferenciais" id="diferenciais">
+  <div class="container">
+    <div class="dif-layout">
+      <div class="dif-text reveal">
+        <div class="section-label">Por que a Alexandre Guitars</div>
+        <h2 class="section-title">Atenção que<br>faz diferença</h2>
+        <ul class="dif-list">
+          <li class="dif-item">
+            <div class="dif-bullet">🎯</div>
+            <div class="dif-content">
+              <h4>Especialização em instrumentos de corda</h4>
+              <p>Não sou assistência generalista. Toda a minha experiência, ferramentas e atenção são voltadas para guitarras, violões e baixos.</p>
+            </div>
+          </li>
+          <li class="dif-item">
+            <div class="dif-bullet">📸</div>
+            <div class="dif-content">
+              <h4>Você vê tudo antes e depois</h4>
+              <p>Fotos e vídeos do instrumento na entrada, durante o serviço e na saída. Transparência total em cada etapa.</p>
+            </div>
+          </li>
+          <li class="dif-item">
+            <div class="dif-bullet">🛡️</div>
+            <div class="dif-content">
+              <h4>Garantia real de 30 dias</h4>
+              <p>Qualquer problema relacionado ao serviço é corrigido sem custo. Simples assim.</p>
+            </div>
+          </li>
+          <li class="dif-item">
+            <div class="dif-bullet">💬</div>
+            <div class="dif-content">
+              <h4>Diagnóstico honesto</h4>
+              <p>Se o instrumento não precisa de um serviço, eu digo. Prefiro perder um trabalho do que a confiança do cliente.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="dif-visual reveal">
+        <div class="dif-stat">
+          <div class="big">30</div>
+          <div class="lbl">dias de garantia</div>
+        </div>
+        <div class="dif-stat">
+          <div class="big">24h</div>
+          <div class="lbl">resposta média</div>
+        </div>
+        <div class="dif-stat">
+          <div class="big">✦</div>
+          <div class="lbl">orçamento gratuito</div>
+        </div>
+        <div class="dif-stat">
+          <div class="big">SP</div>
+          <div class="lbl">São Paulo capital</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUMENTOS -->
+<section class="instrumentos">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Instrumentos atendidos</div>
+      <h2 class="section-title">Seu instrumento<br>está aqui</h2>
+    </div>
+    <div class="inst-grid">
+      <div class="inst-card reveal"><span class="inst-icon">🎸</span><div class="inst-name">Guitarra Elétrica</div></div>
+      <div class="inst-card reveal"><span class="inst-icon">🪕</span><div class="inst-name">Violão Aço</div></div>
+      <div class="inst-card reveal"><span class="inst-icon">🎸</span><div class="inst-name">Violão Nylon</div></div>
+      <div class="inst-card reveal"><span class="inst-icon">🎸</span><div class="inst-name">Baixo Elétrico</div></div>
+      <div class="inst-card reveal"><span class="inst-icon">🎸</span><div class="inst-name">Semi-Acústica</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contato" id="contato">
+  <div class="container">
+    <div class="contato-inner">
+      <div class="contato-info reveal">
+        <div class="section-label">Contato</div>
+        <h2 class="section-title">Vamos cuidar<br>do seu<br>instrumento</h2>
+        <p>Entre em contato pelo WhatsApp ou pelo formulário ao lado. O diagnóstico e o orçamento são sempre gratuitos e sem compromisso.</p>
+
+        <div class="contato-items">
+          <a href="https://wa.me/5511993394130" class="contato-item" target="_blank">
+            <div class="c-icon">💬</div>
+            <div>
+              <div class="c-label">WhatsApp</div>
+              <div class="c-value">(11) 99339-4130</div>
+            </div>
+          </a>
+          <a href="https://www.instagram.com/alexandreguitarsluthieria?igsh=MTd5N3Z1OWl3amdjaw==" class="contato-item" target="_blank">
+            <div class="c-icon">📸</div>
+            <div>
+              <div class="c-label">Instagram</div>
+              <div class="c-value">@alexandreguitarsluthieria</div>
+            </div>
+          </a>
+          <a href="mailto:contato@alexandreguitars.com.br" class="contato-item">
+            <div class="c-icon">✉️</div>
+            <div>
+              <div class="c-label">E-mail</div>
+              <div class="c-value">contato@alexandreguitars.com.br</div>
+            </div>
+          </a>
+          <div class="contato-item" style="cursor:default;">
+            <div class="c-icon">📍</div>
+            <div>
+              <div class="c-label">Endereço</div>
+              <div class="c-value">Lapa — São Paulo, SP</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="horarios">
+          <h4>✦ Horário de atendimento</h4>
+          <div class="horario-row"><span class="hor-dia">Segunda – Sexta</span><span class="hor-hora">9h – 19h</span></div>
+          <div class="horario-row"><span class="hor-dia">Sábado</span><span class="hor-hora">9h – 13h</span></div>
+          <div class="horario-row"><span class="hor-dia">Domingo</span><span class="hor-hora fechado">Fechado</span></div>
+        </div>
+      </div>
+
+      <div class="contato-form reveal">
+        <h3>Pedir orçamento</h3>
+        <p style="font-size:14px;color:var(--cream-dim);line-height:1.8;margin-bottom:1.5rem;">
+          Preencha o formulário e entraremos em contato em até 24 horas.
+        </p>
+
+        <form action="https://formspree.io/f/xdabqpkk" method="POST">
+
+          <input type="hidden" name="_subject" value="Novo orçamento — Alexandre Guitars">
+          <input type="hidden" name="_next" value="http://alexandreguitars.com.br/?enviado=1">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Seu nome *</label>
+              <input type="text" name="nome" placeholder="Nome completo" required>
+            </div>
+            <div class="form-group">
+              <label>WhatsApp *</label>
+              <input type="tel" name="telefone" placeholder="(11) 99339-4130" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>E-mail *</label>
+            <input type="email" name="email" placeholder="seu@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label>Instrumento</label>
+            <select name="instrumento">
+              <option value="">Selecione...</option>
+              <option>Guitarra elétrica</option>
+              <option>Violão aço</option>
+              <option>Violão nylon</option>
+              <option>Baixo elétrico</option>
+              <option>Semi-acústica</option>
+              <option>Outro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Marca e modelo (se souber)</label>
+            <input type="text" name="modelo" placeholder="Ex: Tagima TG-530">
+          </div>
+
+          <div class="form-group">
+            <label>Descreva o problema ou serviço *</label>
+            <textarea name="mensagem" placeholder="Ex: Minha guitarra está com fret buzz e a ação está muito alta..." required></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Enviar mensagem</button>
+          <div class="form-note">Respondo em até 24h · Orçamento sempre gratuito</div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Alexandre</div>
+  <div class="footer-sub">G u i t a r s</div>
+  <div class="footer-ornament">
+    <div class="line"></div>
+    <div class="star">✦</div>
+    <div class="line"></div>
+  </div>
+  <div class="footer-links">
+    <a href="#sobre">Sobre</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#processo">Como funciona</a>
+    
+    <a href="#contato">Contato</a>
+  </div>
+  <div class="footer-copy">
+    © 2026 Alexandre Guitars · Reparo, Customização e Manutenção · São Paulo, SP<br>
+    @alexandreguitarsluthieria · contato@alexandreguitars.com.br
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" href="https://wa.me/5511993394130" target="_blank" title="Falar no WhatsApp">💬</a>
+
+<script>
+// Mobile menu
+function toggleMenu() {
+  const h = document.getElementById('hamburger');
+  const m = document.getElementById('mobileMenu');
+  h.classList.toggle('open');
+  m.classList.toggle('open');
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.borderBottomColor = window.scrollY > 50 ? 'rgba(74,46,18,0.6)' : 'rgba(46,26,8,1)';
+});
+
+// Form handled via native HTML POST to Formspree
+</script>
 </body>
 </html>
